@@ -14,6 +14,7 @@
 
 6. Start FDML (turn power key). The FDML should be started at least 30 minutes prior to adjusting spectrum, to allow its temperature to stabilize.
 
+
 ## Setting up FDML
 
 ### Initial steps
@@ -23,6 +24,7 @@
 2. If the RS is in "locked" mode, you should hear a change in its hum as the FDML begins to drive it. Check the scope to make sure the resonant scanner is stable (not "wobbling"). Using scope, adjust amplitude knob on RS driver to desired range, nominally 5 V. (The scope's "measure" function is useful to do this quickly.)
 
 3. A key function of the scope is to monitor GS position while deciding when to start acquisition. Turn of channel 2 on scope (RS channel) and adjust scope time scale to 1 second to best visualize the GS signal.
+
 
 ### Key-value editing
 
@@ -44,31 +46,32 @@
 
 9. FDML doesn't load the correct value for "Clk-Out Cycles / Sweep" (1024) unless you change it (e.g. to 1023) and then change it back to 1024, so do this.
 
+
 ### Starting the laser and adjusting its spectrum
 
-0. Make sure nothing in the sample channel is present that might reflect light back to the laser (e.g., a model eye). The feedback from the sample channel will prevent correct laser calibration.
+1. Make sure nothing in the sample channel is present that might reflect light back to the laser (e.g., a model eye). The feedback from the sample channel will prevent correct laser calibration.
 
-1. Press the "Start" button on the FDML panel (lower left). The OSA will show the FDML's output, initially a narrow band spectrum that moves through the full spectral range.
+2. Press the "Start" button on the FDML panel (lower left). This will initialize the FDML's auto-calibration procedure. During this process, the OSA will show the FDML's output, initially a narrow band spectrum that moves through the full spectral range.
 
-2. The FDML will make a series of beeps when it's done adjusting its spectrum, and its nominally correct spectrum will be visible on the OSA.
+3. The FDML will make a series of beeps when it's done adjusting its spectrum, and its nominally correct spectrum will be visible on the OSA.
 
-3. If the spectrum looks good and the three fiber Bragg grating indicators on the FDML front panel are consistently green, skip the next steps.
+4. If the spectrum looks good and the three fiber Bragg grating indicators on the FDML front panel are consistently green, skip the next steps in this section.
 
-4. If auto-calibration did not work correctly, press "Acknowledge" button to see error codes. Press "Clear" button to clear the warnings. This will reveal whether new warnings are being generated or not.
+5. If auto-calibration did not work correctly, press "Acknowledge" button to see error codes. Press "Clear" button to clear the warnings. This will reveal whether new warnings are being generated or not.
 
-5. Press "Escape" until you get back to the home screen.
+6. Press "Escape" until you get back to the home screen.
 
-6. Press "4", next to the polarization paddle angle indicators, to begin to adjust the paddles manually. There are four sets of 2 paddles, for the cavity, buffer 0, buffer 1, and buffer 2.
+7. Press "4", next to the polarization paddle angle indicators, to begin to adjust the paddles manually. There are four sets of 2 paddles, for the cavity, buffer 0, buffer 1, and buffer 2.
 
-7. Generally you want to adjust the "cavity" paddles first, as these affect all four copies of the sweep. Select the cavity paddles using the soft key under the cavity paddle, and then use the knob to adjust these, while watching both the OSA and FDML (blue) plots of the spectrum. Keep in mind that these are reversed with respect to one another--long wavelength on the left on the FDML and on the right on OSA.
+8. Generally you want to adjust the "cavity" paddles first, as these affect all four copies of the sweep. Select the cavity paddles using the soft key under the cavity paddle, and then use the knob to adjust these, while watching both the OSA and FDML (blue) plots of the spectrum. Keep in mind that these are reversed with respect to one another--long wavelength on the left on the FDML and on the right on OSA.
 
-8. Once the spectrum looks okay, press "Escape" to get back to the home screen.
+9. Once the spectrum looks okay, press "Escape" to get back to the home screen.
 
-9. Turn off the laser by pressing the red "Laser" button. (This button can be used to turn on and off the laser with the current polarization paddle settings.)
+10. Turn off the laser by pressing the red "Laser" button. (This button can be used to turn on and off the laser with the current polarization paddle settings.)
 
-10. Restart the auto-calibration procedure by pressing "Start". The idea here is that you've chosen reasonable settings for the paddles and now the FDML is going to optimize its timing based upon the new paddle positions. This auto-calibration procedure does not change the paddle angles.
+11. Restart the auto-calibration procedure by pressing "Start". The idea here is that you've chosen reasonable settings for the paddles and now the FDML is going to optimize its timing based upon the new paddle positions. This auto-calibration procedure does not change the paddle angles.
 
-11. If the spectrum is still poor, repeat steps 5-11.
+12. If the spectrum is still poor, repeat steps 5-11.
 
 
 ## Calibrating and preparing the FDML software
@@ -91,9 +94,10 @@
 
 7. If the spectrum has changed for the worse, now is a good time to adjust the cavity polarization paddle again to reshape the spectrum.
 
-7. Switch to the "Image preview" tab and look at the live B-scan view. While observing the noise in this image, adjust the FDML sweep frequency (main oscillator frequency). To do this, press the first row soft key and then use the knob. **Do not change the frequency by more than +/- 20 Hz.**
+8. Switch to the "Image preview" tab and look at the live B-scan view. While observing the noise in this image, adjust the FDML sweep frequency (main oscillator frequency). To do this, press the first row soft key and then use the knob. **Do not change the frequency by more than +/- 20 Hz.**
 
-8. Making sure no light is returning from the sample channel, click the "Capture background" and "Subtract background" buttons. The white plot in the LabVIEW panel (the live spectrum) should go to zero (or close to zero), while the red plot will show the unsubtracted live spectrum [??? or is it the saved background plotted in red? Also, is there a yellow plot there as well?].
+9. Making sure no light is returning from the sample channel, click the "Capture background" and "Subtract background" buttons. The white plot in the LabVIEW panel (the live spectrum) should go to zero (or close to zero), while the red plot will show the unsubtracted live spectrum [??? or is it the saved background plotted in red? Also, is there a yellow plot there as well?].
+
 
 ## Imaging a model eye
 
@@ -145,11 +149,18 @@
 
 ## Scan settings
 
+Some example settings:
+
 - 1.5mm x 1.5mm: 9365 for Y GS amplitude (in the FDML K-V settings), 5 V for RS amplitude
 
 - 1.2mm x 1.2mm: 7500 for Y GS amplitude, 4 V for RS amplitude
 
-- RS voltage = 1 V / 300 $\mu m$ on the retina
+More generally:
+
+- GS range (ADU) = 1873 ADU / deg
+
+- RS voltage = 1 V / deg
+
 
 ## Shutdown
 
