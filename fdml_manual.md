@@ -1,4 +1,7 @@
-# FDML operation notes
+FDML Operation Manual
+---------------------
+
+**Authors: Justin V. Migacz (jvmigacz@ucdavis.edu) and Ravi S. Jonnal (rsjonnal@ucdavis.edu)**
 
 ## Startup
 
